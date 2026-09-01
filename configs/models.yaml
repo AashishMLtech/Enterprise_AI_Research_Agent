@@ -1,0 +1,4 @@
+provider: groq
+tiers:
+  fast: {task: "classification, extraction, rewrite"}
+  strong: {task: "planning, synthesis, verification"}

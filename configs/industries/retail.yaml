@@ -1,0 +1,5 @@
+industry: retail
+name_aliases: [retail, ecommerce, commerce]
+ood_terms: [retail, store, shopper, ecommerce, inventory, merchant, marketplace, consumer]
+ood_threshold: 0.25
+source_priorities: [annual_report, research, industry_report, market_data]

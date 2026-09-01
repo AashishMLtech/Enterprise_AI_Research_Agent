@@ -1,0 +1,28 @@
+{
+  "name": "enterprise-ai-research-agent-ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "5.0.4",
+    "pdfjs-dist": "5.4.149",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "typescript": "~5.6.2",
+    "vite": "7.3.5",
+    "vitest": "2.1.8"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true,
+    "esbuild@0.27.2": true
+  }
+}

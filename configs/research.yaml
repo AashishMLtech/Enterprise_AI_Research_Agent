@@ -1,0 +1,4 @@
+budgets:
+  fast: {max_queries: 3, max_sources: 8, max_context_tokens: 2000}
+  balanced: {max_queries: 8, max_sources: 20, max_context_tokens: 4000}
+  deep: {max_queries: 12, max_sources: 40, max_context_tokens: 7000}

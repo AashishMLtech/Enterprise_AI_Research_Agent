@@ -1,0 +1,5 @@
+industry: default
+name_aliases: [default, general]
+ood_terms: [market, company, industry, research, business, technology, banking, online, account, payment]
+ood_threshold: 0.25
+source_priorities: [regulator, annual_report, research, industry_report]
