@@ -1,6 +1,7 @@
 import json
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.config import get_settings
 from backend.app.guardrails.injection import contains_prompt_injection
@@ -12,7 +13,15 @@ from backend.app.retrieval.context import compact_context
 from backend.app.retrieval.web_search import retrieve_evidence
 from backend.app.schemas import Claim, FinalReport, ResearchRequest
 
+settings = get_settings()
 app = FastAPI(title="Enterprise AI Research Agent", version="0.1.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[origin.strip() for origin in settings.frontend_origin.split(",") if origin.strip()],
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health")
@@ -56,7 +65,13 @@ def research(request: ResearchRequest) -> FinalReport:
     prompt = (
         f"Question: {request.question}\n\n"
         f"Evidence:\n{compact_context([evidence_text], settings.max_context_tokens)}\n\n"
-        "Return valid JSON only with this shape: "
+        "Write a detailed explanation that a reader can understand without additional context. "
+        "The summary must be 4 to 6 clear paragraphs and approximately 350 to 600 words. "
+        "Explain the background, answer the question directly, describe the important findings, "
+        "explain why they matter, and mention relevant comparisons or implications when supported "
+        "by the evidence. Use only the supplied evidence; if something is unknown, say so clearly. "
+        "Create 4 to 8 concise claims covering the most important facts, and attach the exact "
+        "evidence IDs that support each claim. Return valid JSON only with this shape: "
         '{"summary":"...","claims":[{"claim_id":"claim-1",'
         '"text":"...","evidence_ids":["wiki-1"],"confidence":"HIGH"}]}'
     )

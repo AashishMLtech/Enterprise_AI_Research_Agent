@@ -14,6 +14,7 @@ class GroqProvider:
         completion = client.chat.completions.create(
             model=model,
             temperature=0.1,
+            response_format={"type": "json_object"},
             messages=[
                 {"role": "system", "content": "Answer only from the supplied evidence. Do not invent facts or sources."},
                 {"role": "user", "content": prompt},

@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     database_url: str = "postgresql+psycopg2://localhost/research_agent"
     redis_url: str = "redis://localhost:6379/0"
+    frontend_origin: str = "http://localhost:5173"
     groq_api_key: str | None = None
     # Use the broadly available production model unless a stronger model is
     # explicitly configured through GROQ_MODEL in the local environment.

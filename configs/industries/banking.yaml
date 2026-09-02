@@ -1,5 +1,5 @@
 industry: banking
 name_aliases: [banking, finance, financial]
-ood_terms: [bank, banking, lender, loan, credit, regulator, fintech, deposit, capital]
+ood_terms: [bank, banking, lender, loan, credit, regulator, fintech, deposit, capital, cdd, "due diligence", kyc, aml, compliance, account, hold, suspicious]
 ood_threshold: 0.25
 source_priorities: [regulator, annual_report, research, industry_report]

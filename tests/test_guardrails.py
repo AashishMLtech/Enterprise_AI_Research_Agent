@@ -11,6 +11,16 @@ def test_banking_query_is_in_distribution():
     assert detect_ood("How are bank loan trends changing?", config).in_distribution
 
 
+def test_banking_compliance_query_is_in_distribution():
+    config = {
+        "industry": "banking",
+        "name_aliases": ["banking"],
+        "ood_terms": ["cdd", "kyc", "compliance", "account"],
+        "ood_threshold": 0.25,
+    }
+    assert detect_ood("What is CDD hold on an account and when is it placed?", config).in_distribution
+
+
 def test_retail_query_is_blocked_by_banking_configuration():
     config = {"industry": "banking", "name_aliases": ["banking"], "ood_terms": ["bank", "loan"], "ood_threshold": 0.25}
     assert not detect_ood("What are the latest store inventory trends?", config).in_distribution
